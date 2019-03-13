@@ -140,7 +140,7 @@ var updateDay = function(dayChange)
   var day = Number(document.getElementById("dayNumber").textContent); //get from the paragrph
   day = day + Number(dayChange);
 
-  if (day == 0 || day == 1) {
+  if (day == 0) {
     document.getElementById("button1").disabled = true;
   }
 
@@ -163,8 +163,8 @@ var updateDay = function(dayChange)
     console.log(err);
   })
 
-  if (day != 0){
-  document.getElementById("dayNumber").innerHTML = day; //update the paragrph
+  if (day != 0) {
+    document.getElementById("dayNumber").innerHTML = day; //update the html
   };
 }
 
