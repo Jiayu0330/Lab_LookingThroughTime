@@ -120,11 +120,12 @@ var updateGraph = function(data)
   d3.select("svg")
     .selectAll("rect")
     .data(data)
+    .transition()
+    .delay(100)
+    .duration(400)
+    .ease(d3.easeLinear)
     .attr("y", function(d) {return yScale(d.grade);} )
     .attr("height", function(d) {return height - yScale(d.grade);} )
-    .append("title")
-    .text(function(d) {return d.grade} );
-
 }
 
 var updateDay = function(dayChange)
