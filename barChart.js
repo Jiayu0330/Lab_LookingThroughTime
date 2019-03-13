@@ -112,6 +112,7 @@ var updateGraph = function(data)
 
   var height = 400 - margins.top - margins.bottom
 
+  //update yScale
   var yScale = d3.scaleLinear()
                  .domain([0, 100])
                  .range([height, margins.top]);
@@ -127,16 +128,30 @@ var updateGraph = function(data)
     .attr("y", function(d) {return yScale(d.grade);} )
     .attr("height", function(d) {return height - yScale(d.grade);} )
 
+  //update title
   d3.select("svg")
     .selectAll("title")
     .data(data)
-    .text(function(d) {return d.grade});
+    .text(function(d) {return d.grade;} );
 }
 
 var updateDay = function(dayChange)
 {
   var day = Number(document.getElementById("dayNumber").textContent); //get from the paragrph
   day = day + Number(dayChange);
+
+  if (day == 1) {
+    document.getElementById("button1").disabled = true;
+  }
+
+  else if (day == 10) {
+    document.getElementById("button2").disabled = true;
+  }
+
+  else {
+    document.getElementById("button1").disabled = false;
+    document.getElementById("button2").disabled = false;
+  }
 
   dataP.then(function(data)
   {
@@ -146,13 +161,14 @@ var updateDay = function(dayChange)
   function(err)
   {
     console.log(err);
-  });
+  })
 
   document.getElementById("dayNumber").innerHTML = day; //update the paragrph
 }
 
 dataP.then(function(data)
 {
+  //document.getElementById("button1").disable = true;
   drawGraph(data[0].grades);
 },
 function(err)
