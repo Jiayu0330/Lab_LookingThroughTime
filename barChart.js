@@ -121,7 +121,9 @@ var updateGraph = function(data)
     .selectAll("rect")
     .data(data)
     .attr("y", function(d) {return yScale(d.grade);} )
-    .attr("height", function(d) {return height - yScale(d.grade);} );
+    .attr("height", function(d) {return height - yScale(d.grade);} )
+    .append("title")
+    .text(function(d) {return d.grade} );
 
 }
 
