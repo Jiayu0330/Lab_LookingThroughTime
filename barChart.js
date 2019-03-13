@@ -69,8 +69,8 @@ var drawGraph = function(data) //data is an object
                           .data(data)
                           .enter()
                           .append("g")
-                          .classed("legendLines",true)
-                          .attr("transform",function(d,i) {return "translate("+ (i * barWidth) +", 0)"});
+                          .classed("legendLines", true)
+                          .attr("transform", function(d,i) {return "translate("+ (i * barWidth) +", 0)"});
 
   /*legendLines.append("rect")
                 .attr("cx",40)
@@ -89,6 +89,15 @@ var drawGraph = function(data) //data is an object
                 .style("font-style", "italic")
                 //.style("font-weight", "bold");
 
+  //fake x-axis
+  legendLines.append("line")
+             .classed("line", true)
+             .attr("x1", 33)
+             .attr("x2", 33 + innerPadding * 2 + barWidth)
+             .attr("y1", 82)
+             .attr("y2", 82)
+             .attr("stroke", "#563866")
+             .attr("stroke-width", "2");
 
 }
 
