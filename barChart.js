@@ -45,7 +45,9 @@ var drawGraph = function(data) //data is an object
      .attr("height", function(d) {return height - yScale(d.grade);} )
      .attr("fill", function(d) {return colors(d.name);} )
      .attr("stroke", "#563866")
-     .attr("stroke-width", 2);
+     .attr("stroke-width", 2)
+     .append("title")
+     .text(function(d) {return d.grade});
 
   //y-axis
   var yAxis = d3.axisLeft(yScale);
@@ -61,7 +63,7 @@ var drawGraph = function(data) //data is an object
   //legend
   var legend = svg.append("g")
                   .classed("legend",true)
-                  .attr("transform","translate(0, "+ (height - 85) +")")
+                  .attr("transform","translate(0, "+ (height - 82) +")")
 
   var legendLines = legend.selectAll("g")
                           .data(data)
@@ -79,13 +81,13 @@ var drawGraph = function(data) //data is an object
                 .attr("stroke-width",3);*/
 
   legendLines.append("text")
-                .attr("x", 78)
+                .attr("x", 72)
                 .attr("y", height - 245)
                 .text(function(d) {return d.name;} )
                 .attr("fill", "#563866")
-                .style("font-size", "18")
+                .style("font-size", "20")
                 .style("font-style", "italic")
-                .style("font-weight", "bold");
+                //.style("font-weight", "bold");
 
 
 }
@@ -110,8 +112,7 @@ var updateGraph = function(data)
     .selectAll("rect")
     .data(data)
     .attr("y", function(d) {return yScale(d.grade);} )
-    .attr("height", function(d) {return height - yScale(d.grade);} )
-    .transition(1000);
+    .attr("height", function(d) {return height - yScale(d.grade);} );
 
 }
 

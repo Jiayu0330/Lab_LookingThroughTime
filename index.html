@@ -7,11 +7,27 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
   <body>
+    <div class="title">
+      Grade Data
+    </div>
 
     <svg></svg>
-    <p id="dayNumber">1</p>
-    <button id="button1" onclick="updateDay(-1)">Prev</button>
-    <button id="button2" onclick="updateDay(1)">Next</button>
+
+    <div class="interaction">
+      <div class="day">
+        Day
+      </div>
+
+      <div class="number" id="dayNumber">
+        1
+      </div>
+
+      <div class="buttons">
+        <button id="button1" onclick="updateDay(-1)">Prev</button>
+        <button id="button2" onclick="updateDay(1)">Next</button>
+      </div>
+    </div>
+
     <script type="text/javascript" src="barChart.js">
     </script>
 
