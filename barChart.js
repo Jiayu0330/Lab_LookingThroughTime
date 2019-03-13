@@ -126,6 +126,11 @@ var updateGraph = function(data)
     .ease(d3.easeLinear)
     .attr("y", function(d) {return yScale(d.grade);} )
     .attr("height", function(d) {return height - yScale(d.grade);} )
+
+  d3.select("svg")
+    .selectAll("title")
+    .data(data)
+    .text(function(d) {return d.grade});
 }
 
 var updateDay = function(dayChange)
