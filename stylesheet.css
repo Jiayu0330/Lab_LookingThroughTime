@@ -68,8 +68,3 @@ rect:hover{
   fill: #563866;
   transition: 0.1s;
 }
-
-.tooltip{
-  color: red;
-  font-size: 18px;
-}
