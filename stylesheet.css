@@ -4,14 +4,15 @@ body{
 }
 
 .title{
-  font-size: 30px;
+  font-size: 32px;
   margin-top: 3%;
   font-weight: bold;
   text-align: center;
+  font-family: serif;
 }
 
 svg{
-  margin-top: 10%;
+  margin-top: 8%;
   margin-left: 25%;
 }
 
