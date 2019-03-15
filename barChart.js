@@ -31,6 +31,16 @@ var drawGraph = function(data) //data is an object
 
   var colors = d3.scaleOrdinal(d3.schemeSet3);
 
+  // var tooltip = d3.select("body")
+  //                 .data(data)
+  //                 .enter()
+  //                 .append("div")
+  //                 .classed("tooltip", true)
+	//                 .style("position", "absolute")
+	//                 .style("z-index", "10")
+	//                 .style("visibility", "hidden")
+	//                 .text("tooltip")
+
   var svg = d3.select("svg")
               .attr("width", screen.width)
               .attr("height", screen.height)
@@ -46,8 +56,12 @@ var drawGraph = function(data) //data is an object
      .attr("fill", function(d) {return colors(d.name);} )
      .attr("stroke", "#563866")
      .attr("stroke-width", 2)
+     // .on("mouseover", function() {return tooltip.style("visibility", "visible");} )
+ 	   // .on("mousemove", function() {return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");} )
+ 	   // .on("mouseout", function() {return tooltip.style("visibility", "hidden");} );
      .append("title")
      .text(function(d) {return d.grade});
+
 
   //y-axis
   var yAxis = d3.axisLeft(yScale);
@@ -123,8 +137,8 @@ var updateGraph = function(data)
     .data(data)
     .transition()
     .delay(100)
-    .duration(400)
-    .ease(d3.easeLinear)
+    .duration(1500)
+    .ease(d3.easeBounce)
     .attr("y", function(d) {return yScale(d.grade);} )
     .attr("height", function(d) {return height - yScale(d.grade);} )
 
